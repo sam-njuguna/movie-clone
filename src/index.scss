@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+
+  outline: 0;
+}
+:root {
+  --bg: #141414;
+  --text: #d1d0d0;
+  --trans: 0.5s ease;
+  --btn: #b80404;
+  --btn-s: 0 3px 10px rgba(255, 0, 0, 0.493);
+}
+
+html,
+body {
+  background-color: var(--bg);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.5;
+  font-size: large;
+  letter-spacing: 1px;
+}
+.container {
+  padding-top: 6rem;
+  margin: auto;
+  width: 90%;
+  @media (min-width: 768px) {
+    @media (max-width: 999px) {
+      width: 90%;
+    }
+  }
+  @media (max-width: 699px) {
+    width: 98%;
+  }
+}
+// .login_image {
+//   background-image: url("./assets/header-img.png");
+//   background-size: cover;
+//   min-height: 90vh;
+//   position: relative;
+//   filter: brightness(20%);
+// }
+
+// button {
+//   width: max-content;
+//   padding: 1rem 2rem;
+//   border-radius: 2rem;
+//   border: none;
+//   margin-top: 1rem;
+//   font-size: large;
+//   font-weight: 700;
+//   background-color: transparent;
+//   border: 1px solid #ccc;
+//   transition: var(--trans);
+//   cursor: pointer;
+//   a {
+//     color: #fff;
+//   }
+//   &:hover {
+//     background-color: var(--btn);
+//     box-shadow: var(--btn-s);
+//     border: 1px solid var(--btn);
+//     a {
+//       color: var(--text);
+//     }
+//   }
+// }
