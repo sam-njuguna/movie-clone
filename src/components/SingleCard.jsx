@@ -74,7 +74,7 @@ const Container = styled.div`
 
       gap: 1rem;
       @media (max-width: 699px) {
-        gap: 0.4rem;
+        gap: 0.5rem;
       }
       .details {
         width: 200px;

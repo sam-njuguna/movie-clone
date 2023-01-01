@@ -254,13 +254,18 @@ const Container = styled.div`
         background-size: cover;
       }
 
-      @media (max-width: 699px) {
+      @media (max-width: 999px) {
         flex-direction: column;
         img {
           width: 320px;
           height: 400px;
           object-fit: cover;
           background-position: center;
+        }
+        @media (min-width: 700px) {
+          img {
+            width: 600px;
+          }
         }
       }
 

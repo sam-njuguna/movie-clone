@@ -28,25 +28,9 @@ const More = ({ setPage, numPages = 50 }) => {
   );
 };
 const Container = styled.div`
-  text-align: center;
   display: flex;
   justify-content: center;
-  margin: 1rem 0;
-  margin-left: 3rem;
-  width: 70%;
-  @media (max-width: 1300px) {
-    width: 70%;
-    font-size: 0.9rem;
-    margin: 0 auto;
-    @media (max-width: 600px) {
-      margin-left: 0;
-      width: 60%;
-      margin: 0 auto;
-    }
-  }
-  @media (min-width: 1310px) {
-    width: 70%;
-    margin: 0 auto;
-  }
+  align-items: center;
+  margin: 1.5rem 0;
 `;
 export default More;

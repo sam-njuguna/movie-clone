@@ -1,75 +1,56 @@
-import { useState, useRef } from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { FcGoogle } from "react-icons/fc";
-import Signup from "./Signup";
-import { auth } from "../hooks/firebaseConfig";
-const Signin = () => {
-  const [open, setOpen] = useState(false);
-  const [sign, setSign] = useState(false);
-  const emailRef = useRef();
-  const passwordRef = useRef();
 
-  const handleSignin = () => {
-    setSign(!sign);
+import { FcGoogle } from "react-icons/fc";
+import styled from "styled-components";
+import Signup from "./Signup";
+
+const Signin = () => {
+  const [signIn, setSignIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = () => {
+    setIsOpen(!isOpen);
   };
-  const handleOpen = (e) => {
-    setOpen(!open);
-    e.preventDefault();
-  };
-  const login = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(
-      auth,
-      emailRef.current.value,
-      passwordRef.current.value
-    )
-      .then((user) => {})
-      .catch((error) => {
-        setError(error.message);
-      });
+  const handleSignup = () => {
+    setSignIn(!isOpen);
   };
   return (
     <Container>
-      {sign ? (
+      {signIn ? (
         <Signup />
       ) : (
-        <div className="page">
-          <h1>Sign In</h1>
+        <div className="form">
+          <h2>Sign In</h2>
           <form action="">
-            <p>Email (personal or work)</p>
-            <input
-              className="in"
-              type="text"
-              placeholder="example@gmail.com"
-              ref={emailRef}
-            />
-            <p>Password</p>
-            <div className="pass">
-              <input
-                className="in"
-                type={open === false ? "password" : "text"}
-                placeholder="Password"
-                ref={passwordRef}
-              />
-              <span onClick={handleOpen} className="eye">
-                {open === false ? <AiFillEyeInvisible /> : <AiFillEye />}
-              </span>
+            <div className="input">
+              <label htmlFor="">Email (personal or work)</label>
+              <input type="email" placeholder="example@gmail.com" required />
+              <label htmlFor="">password</label>
+              <div className="pass">
+                <input
+                  type={isOpen === false ? "password" : "text"}
+                  placeholder="Enter password"
+                  className="pass"
+                  required
+                />
+                <span onClick={handleOpen} className="eye">
+                  {isOpen === false ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </span>
+              </div>
             </div>
-            <button type="submit" onClick={login} className="top">
+            <button type="submit" style={{ marginTop: " 1rem" }}>
               Login
             </button>
             <p className="or"> or</p>
-            <button type="submit" onClick={login}>
+            <button>
               <span> Sign in with Google</span> <FcGoogle />
             </button>
             <div className="up">
               <p>
-                <span>Don't have an account?</span>
+                <span>Dont have an account !</span>
               </p>
-              <p className="link" onClick={handleSignin}>
-                Sign Up now
+              <p className="link" onClick={handleSignup}>
+                create one?
               </p>
             </div>
           </form>
@@ -78,93 +59,91 @@ const Signin = () => {
     </Container>
   );
 };
+
 const Container = styled.div`
-  h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-weight: 900;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-
-    padding-left: 0.2rem;
-    background-color: #303030;
-    height: 600px;
-    width: 390px;
-    padding: 5rem 1rem;
-    border-radius: 0.4rem;
-    @media (max-width: 699px) {
-      width: 340px;
-    }
-    input {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      font-family: var(--monospace);
-      border-radius: 2rem;
-    }
-    .pass {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      span {
-        position: absolute;
-        top: 0.5rem;
-        right: 1rem;
-        color: var(--bg);
-        font-size: x-large;
-      }
-    }
-    .or {
+  .form {
+    background-color: var(--bg);
+    padding: 2rem 0.8rem;
+    h2 {
       text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 900;
     }
-    p {
-      font-size: smaller;
-      font-weight: 500;
-      margin-left: 0.5rem;
-    }
-    .top {
-      margin-top: 1rem;
-    }
-
-    button {
-      width: 100%;
-      padding: 15px;
-      font-size: medium;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 2rem;
-      background-color: var(--btn);
-      color: var(--text);
-      transition: var(--trans);
-      &:hover {
-        box-shadow: var(--btn-s);
-      }
-      svg {
-        font-size: 1.2rem;
-      }
-    }
-    .up {
+    form {
       display: flex;
       flex-direction: column;
-      text-align: center;
       justify-content: center;
-      align-items: center;
-      margin-top: 2rem;
-      .link {
-        transition: var(--trans);
 
-        cursor: pointer;
-        &:hover {
-          text-decoration: underline;
+      width: 20vw;
+      @media (max-width: 999px) {
+        /* width: 100vw; */
+        width: 95vw;
+        @media (min-width: 700px) {
+          width: 50vw;
         }
+      }
+      .input {
+        display: flex;
+        flex-direction: column;
+        label {
+          font-size: smaller;
+          font-weight: 700;
+          margin-left: 0.2rem;
+        }
+        input {
+          /* width: 100%; */
+          padding: 12px;
+          margin-bottom: 1rem;
+          font-size: medium;
+          @media (max-width: 699px) {
+            font-size: medium;
+          }
+        }
+        .pass {
+          position: relative;
+          input {
+            width: 100%;
+          }
+          span {
+            position: absolute;
+            content: "";
+            top: 0.6rem;
+            right: 1rem;
+            font-size: 1.1rem;
+            color: var(--bg);
+            cursor: pointer;
+          }
+        }
+      }
+      button {
+        width: 100%;
+        padding: 15px;
+        font-size: medium;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        font-weight: 700;
+        border: none;
+        background-color: transparent;
+        background-color: var(--btn);
+        color: var(--text);
+        transition: var(--trans);
+        &:hover {
+          box-shadow: var(--btn-s);
+        }
+        svg {
+          font-size: 1.2rem;
+        }
+      }
+      p {
+        text-align: center;
+        margin: 0.5rem 0;
+      }
+      .link {
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: smaller;
       }
     }
   }

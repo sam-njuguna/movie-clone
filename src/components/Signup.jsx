@@ -1,106 +1,52 @@
-import { useState, useRef } from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import {
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-} from "firebase/auth";
-import Signin from "./Signin";
-import { auth } from "../hooks/firebaseConfig";
+
 import { FcGoogle } from "react-icons/fc";
+import styled from "styled-components";
+import Signin from "./Signin";
+
 const Signup = () => {
-  const [open, setOpen] = useState(false);
-  const [sign, setSign] = useState(false);
-  const emailRef = useRef();
-  const passwordRef = useRef();
-
+  const [signIn, setSignIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = () => {
+    setIsOpen(!isOpen);
+  };
   const handleSignin = () => {
-    setSign(!sign);
-  };
-  const handleOpen = (e) => {
-    setOpen(!open);
-    e.preventDefault();
-  };
-  const register = (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(
-      auth,
-      emailRef.current.value,
-      passwordRef.current.value
-    )
-      .then((user) => {
-        console.log(user);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  };
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase
-      // .auth()
-      .signInWithPopup(provider)
-      .then(function (result) {
-        // The signed-in user info.
-        const user = result.user;
-        // ...
-      })
-      .catch(function (error) {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        const credential = error.credential;
-        // ...
-      });
+    setSignIn(true);
   };
   return (
     <Container>
-      {sign ? (
+      {signIn ? (
         <Signin />
       ) : (
-        <div className="page">
-          <h1>Sign Up</h1>
+        <div className="form">
+          <h2>Sign Up</h2>
           <form action="">
-            <p>Email (personal or work)</p>
-            <input
-              className="in"
-              type="text"
-              placeholder="example@gmail.com"
-              ref={emailRef}
-            />
-            <p>Password</p>
-            <div className="pass">
-              <input
-                className="in"
-                type={open === false ? "password" : "text"}
-                placeholder="Password"
-                ref={passwordRef}
-              />
-              <span onClick={handleOpen} className="eye">
-                {open === false ? <AiFillEyeInvisible /> : <AiFillEye />}
-              </span>
+            <div className="input">
+              <label htmlFor="">Email (personal or work)</label>
+              <input type="email" placeholder="example@gmail.com" required />
+              <label htmlFor="">password</label>
+              <div className="pass">
+                <input
+                  type={isOpen === false ? "password" : "text"}
+                  placeholder="Enter password"
+                  required
+                />
+                <span onClick={handleOpen} className="eye">
+                  {isOpen === false ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </span>
+                <input
+                  type={isOpen === false ? "password" : "text"}
+                  placeholder="Confirm password"
+                  required
+                />
+              </div>
             </div>
-            <p>Confirm Password</p>
-            <div className="pass">
-              <input
-                className="in"
-                type={open === false ? "password" : "text"}
-                placeholder="Confirm Password"
-                ref={passwordRef}
-              />
-              <span onClick={handleOpen} className="eye">
-                {open === false ? <AiFillEyeInvisible /> : <AiFillEye />}
-              </span>
-            </div>
-            <button type="submit" onClick={register} className="top">
+            <button type="submit" style={{ marginTop: " 1rem" }}>
               Login
             </button>
             <p className="or"> or</p>
-            <button onClick={signInWithGoogle}>
+            <button>
               <span> Sign in with Google</span> <FcGoogle />
             </button>
             <div className="up">
@@ -117,89 +63,88 @@ const Signup = () => {
     </Container>
   );
 };
+
 const Container = styled.div`
-  h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-weight: 900;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-
-    padding-left: 0.2rem;
-    background-color: #303030;
-    height: 600px;
-    width: 390px;
-    padding: 5rem 1rem;
-    border-radius: 0.4rem;
-
-    @media (max-width: 699px) {
-      width: 340px;
+  .form {
+    background-color: var(--bg);
+    padding: 2rem 0.8rem;
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 900;
     }
-    input {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      font-family: var(--monospace);
-    }
-    .pass {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      span {
-        position: absolute;
-        top: 0.5rem;
-        right: 1rem;
-        color: var(--bg);
-        font-size: x-large;
-      }
-    }
-    p {
-      font-size: smaller;
-      font-weight: 500;
-      margin-left: 0.5rem;
-    }
-    .top {
-      margin-top: 1rem;
-    }
-
-    button {
-      width: 100%;
-      padding: 15px;
-      font-size: medium;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      font-weight: 700;
-      border: none;
-
-      background-color: var(--btn);
-      color: var(--text);
-      transition: var(--trans);
-      &:hover {
-        box-shadow: var(--btn-s);
-      }
-      svg {
-        font-size: 1.2rem;
-      }
-    }
-    .up {
+    form {
       display: flex;
       flex-direction: column;
-      text-align: center;
       justify-content: center;
-      align-items: center;
-      margin-top: 2rem;
-      .link {
-        transition: var(--trans);
-        cursor: pointer;
-        &:hover {
-          text-decoration: underline;
+
+      width: 20vw;
+      @media (max-width: 999px) {
+        /* width: 100vw; */
+        width: 95vw;
+        @media (min-width: 700px) {
+          width: 50vw;
         }
+      }
+      .input {
+        display: flex;
+        flex-direction: column;
+        label {
+          font-size: smaller;
+          font-weight: 700;
+          margin-left: 0.2rem;
+        }
+        input {
+          /* width: 100%; */
+          padding: 12px;
+          margin-bottom: 1rem;
+          font-size: medium;
+          @media (max-width: 699px) {
+            font-size: medium;
+          }
+        }
+        .pass {
+          position: relative;
+          input {
+            width: 100%;
+          }
+          span {
+            position: absolute;
+            content: "";
+            top: 0.6rem;
+            right: 1rem;
+            font-size: 1.1rem;
+            color: var(--bg);
+            cursor: pointer;
+          }
+        }
+      }
+      button {
+        width: 100%;
+        padding: 15px;
+        font-size: medium;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        font-weight: 700;
+        border: none;
+
+        background-color: var(--btn);
+        color: var(--text);
+        transition: var(--trans);
+        &:hover {
+          box-shadow: var(--btn-s);
+        }
+      }
+      p {
+        text-align: center;
+        margin: 0.5rem 0;
+      }
+      .link {
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: smaller;
       }
     }
   }

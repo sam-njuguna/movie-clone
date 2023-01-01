@@ -70,7 +70,7 @@ const Container = styled.div`
     left: 0;
     right: 0;
     .home {
-      padding-top: 5rem;
+      padding-top: 0rem;
       display: flex;
       align-items: center;
       justify-content: space-between;

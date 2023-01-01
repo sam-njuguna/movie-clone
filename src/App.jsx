@@ -27,17 +27,17 @@ const App = () => {
   // }, [dispatch]);
   return (
     <div className="main">
-      <MainPage />
-      {/* <Routes>
+      {/* <MainPage /> */}
+      <Routes>
         <>
           <Route path="/" element={<Home />} exact />
           <Route path="/movie" element={<Movie />} exact />
           <Route path="/tv" element={<Series />} exact />
-          <Route path="/search" element={<Search />} exact /> 
-          <Route path="/details/:type/:id" element={<MovieCard />} exact />
-            <Route path="/profile" element={<Profile />} exact />
+          <Route path="/search" element={<Search />} exact />
+          {/* <Route path="/details/:type/:id" element={<MovieCard />} exact />
+          <Route path="/profile" element={<Profile />} exact /> */}
         </>
-       </Routes> */}
+      </Routes>
     </div>
   );
 };
