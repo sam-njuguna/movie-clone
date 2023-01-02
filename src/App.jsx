@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./hooks/firebaseConfig";
-import Home from "./pages/Home";
-import Movie from "./pages/Movie";
-import Series from "./pages/Series";
-import Search from "./pages/Search";
-import MainPage from "./pages/MainPage";
-import MovieDetails from "./pages/MovieDetails";
-import Profile from "./pages/Profile";
+import {
+  Home,
+  Movie,
+  Search,
+  Series,
+  MovieDetails,
+  Profile,
+  MainPage,
+} from "./pages";
 
 const App = () => {
   const user = useSelector(selectUser);

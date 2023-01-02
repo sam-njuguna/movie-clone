@@ -24,7 +24,7 @@ const Signin = () => {
       .then(() => {})
       .catch(() => {});
   };
-  const Login = (e) => {
+  const logIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(
       auth,
@@ -69,7 +69,7 @@ const Signin = () => {
             <button
               type="submit"
               style={{ marginTop: " 1rem" }}
-              onClick={Login}
+              onClick={logIn}
             >
               Login
             </button>

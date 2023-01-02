@@ -23,6 +23,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/profile");
+    window.scroll(0, 0);
   };
 
   window.onscroll = () => {
@@ -34,12 +35,15 @@ const Navbar = () => {
     <Conatiner>
       <div className={`navbar ${scrolled ? "scroll" : ""}`}>
         <div className="logo">
-          <Link to="/">logo</Link>
+          <Link to="/">
+            <h1>S</h1>
+            <h4>Trailers</h4>
+          </Link>
         </div>
         <ul>
           {nav.map((item, index) => (
             <li key={index}>
-              <NavLink to={item.link} exact>
+              <NavLink to={item.link} exact onClick={() => window.scroll(0, 0)}>
                 {item.name}
               </NavLink>
             </li>
@@ -61,6 +65,7 @@ const Conatiner = styled.div`
   .scroll {
     background-color: #141414dd;
     width: 100%;
+    animation: load 1s alternate;
   }
 
   .navbar {
@@ -72,15 +77,52 @@ const Conatiner = styled.div`
 
     position: fixed;
     z-index: 9999;
-    padding: 0.9rem;
+    @media (max-width: 699px) {
+      padding: 1.2rem;
+      .logo {
+        display: none;
+      }
+    }
     @media (min-width: 700px) {
-      padding: 2rem 10rem;
+      padding: 0 10rem;
+    }
+    .logo {
+      a {
+        color: #b40202;
+        margin-bottom: 1rem;
+        @media (max-width: 699px) {
+          text-align: center;
+        }
+        h1 {
+          font-weight: 900;
+          font-size: 2.5rem;
+          margin-left: 1rem;
+          @media (max-width: 699px) {
+            margin-left: 0;
+          }
+        }
+        h4 {
+          margin-top: -0.9rem;
+        }
+      }
     }
     .main {
       display: flex;
       gap: 2rem;
       justify-content: space-between;
       align-items: center;
+      svg {
+        font-size: 1.5rem;
+        color: var(--text);
+        cursor: pointer;
+        transition: var(--trans);
+        &:hover {
+          color: var(--btn);
+        }
+        @media (max-width: 699px) {
+          font-size: 1.3rem;
+        }
+      }
     }
     ul {
       display: flex;
@@ -90,9 +132,18 @@ const Conatiner = styled.div`
       li {
         a {
           color: var(--text);
+          font-weight: 500;
+          cursor: pointer;
+          transition: var(--trans);
+          &:hover {
+            color: #838181dd;
+          }
           @media (max-width: 699px) {
             font-size: smaller;
           }
+        }
+        .active {
+          color: #b40202;
         }
       }
     }

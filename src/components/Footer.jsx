@@ -18,20 +18,28 @@ const Footer = () => {
           <div className="right">
             <ul className="links">
               <li>
-                <Link to="/search">Search</Link>
+                <Link to="/search" onClick={() => window.scroll(0, 0)}>
+                  Search
+                </Link>
               </li>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" onClick={() => window.scroll(0, 0)}>
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/movie">Movies</Link>
+                <Link to="/movie" onClick={() => window.scroll(0, 0)}>
+                  Movies
+                </Link>
               </li>
               <li>
-                <Link to="/tv">Series</Link>
+                <Link to="/tv" onClick={() => window.scroll(0, 0)}>
+                  Series
+                </Link>
               </li>
             </ul>
             <div className="info">
-              <h2>Get in touch: </h2>
+              <h2>Get in touch </h2>
               <div className="all">
                 <div className="social">
                   <a
@@ -74,6 +82,7 @@ const Container = styled.div`
     padding: 0.5rem;
     text-align: center;
     border-top: 1px solid #464545;
+    font-size: small;
     span {
       color: #b40202;
     }
@@ -135,7 +144,7 @@ const Container = styled.div`
           a {
             color: white;
             font-weight: 600;
-
+            font-size: smaller;
             &:hover {
               color: #b40202;
               transition: 0.5s ease;
@@ -143,6 +152,9 @@ const Container = styled.div`
           }
         }
         .info {
+          h2 {
+            font-size: 1.2rem;
+          }
           .all {
             .social {
               display: flex;
