@@ -180,7 +180,7 @@ const Container = styled.div`
             position: absolute;
             content: "";
             top: 0.6rem;
-            right: 2rem;
+            right: 1rem;
             font-size: 1.2rem;
             color: var(--text);
             cursor: pointer;

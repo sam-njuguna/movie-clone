@@ -116,12 +116,13 @@ const Container = styled.div`
       }
     }
     p {
-      padding: 0.6rem;
+      /* padding: 0.6rem; */
       background-color: transparent;
       color: #b40202;
       border: none;
-      margin: 0.6rem 0;
-      margin-left: -3.5rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.5rem;
+      margin-left: -2.5rem;
       svg {
         cursor: pointer;
         font-size: large;
