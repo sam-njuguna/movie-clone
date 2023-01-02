@@ -60,16 +60,16 @@ const Genres = ({ setPage, get_Url, selectedGenres, setSelectedGenres }) => {
   );
 };
 const Container = styled.div`
-  /* background-color: #252121; */
-  padding: 0.2rem;
+  padding-top: 8rem;
   border-radius: 0.4rem;
   width: 50%;
   margin: 0 auto;
   overflow-x: scroll;
   overflow-y: hidden;
 
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   ::-webkit-scrollbar {
     width: 6px;
     height: 4px;

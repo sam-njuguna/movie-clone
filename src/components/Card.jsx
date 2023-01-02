@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Api from "../api/Api";
 import { S_image } from "../api/Images";
@@ -19,17 +20,32 @@ const Card = ({ title, getUrl, link }) => {
   function cut(str, n) {
     return str.length > n ? str.substr(0, n - 1) + "" : str;
   }
+
+  const navigate = useNavigate();
+  const handleNavigate = (type, id) => {
+    navigate(`/details/${type}/${id}`);
+    window.scroll(0, 0);
+  };
   return (
     <Conatiner>
       <div className="main container">
         <div className="header">
           <h1>{title}</h1>
-          <Link to={`/${link}`}>Load more</Link>
+          {/* <Link to={`/${link}`}>Load more</Link> */}
         </div>
         <div className="main__data ">
           {movie.map((movie, index) => {
             return (
-              <div key={index} className="deatils">
+              <div
+                key={index}
+                className="deatils"
+                onClick={() =>
+                  handleNavigate(
+                    movie.first_air_date ? "tv" : "movie",
+                    movie.id
+                  )
+                }
+              >
                 <img src={`${S_image}${movie.poster_path}`} alt="" />
                 <div className="desc">
                   <p>{truncate(`${movie.title || movie.name}`, 15)}</p>
@@ -62,6 +78,11 @@ const Conatiner = styled.div`
       a {
         margin-left: 2rem;
       }
+      h1 {
+        @media (max-width: 699px) {
+          font-size: larger;
+        }
+      }
     }
 
     &__data {
@@ -72,6 +93,7 @@ const Conatiner = styled.div`
       margin-bottom: 1rem;
       gap: 0.5rem;
       padding-bottom: 1rem;
+      cursor: pointer;
       ::-webkit-scrollbar {
         display: none;
       }
@@ -150,4 +172,5 @@ const Conatiner = styled.div`
     }
   }
 `;
+
 export default Card;

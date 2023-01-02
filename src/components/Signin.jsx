@@ -1,36 +1,70 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-
+import { auth, provider } from "../hooks/firebaseConfig";
 import { FcGoogle } from "react-icons/fc";
 import styled from "styled-components";
 import Signup from "./Signup";
+import { signInWithPopup } from "firebase/auth";
+import Reset from "./Reset";
 
 const Signin = () => {
   const [signIn, setSignIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [forgetPassword, setForgetPassword] = useState(false);
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
   const handleSignup = () => {
     setSignIn(!isOpen);
   };
+  const signWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(e);
+      });
+  };
+  const Login = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(
+      auth,
+      emailRef.current.value,
+      passwordRef.current.value
+    )
+      .then((user) => {})
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
   return (
     <Container>
       {signIn ? (
         <Signup />
+      ) : forgetPassword ? (
+        <Reset />
       ) : (
         <div className="form">
           <h2>Sign In</h2>
           <form action="">
             <div className="input">
               <label htmlFor="">Email (personal or work)</label>
-              <input type="email" placeholder="example@gmail.com" required />
+              <input
+                type="email"
+                placeholder="example@gmail.com"
+                required
+                ref={emailRef}
+              />
               <label htmlFor="">password</label>
               <div className="pass">
                 <input
                   type={isOpen === false ? "password" : "text"}
                   placeholder="Enter password"
                   className="pass"
+                  ref={passwordRef}
                   required
                 />
                 <span onClick={handleOpen} className="eye">
@@ -38,22 +72,36 @@ const Signin = () => {
                 </span>
               </div>
             </div>
-            <button type="submit" style={{ marginTop: " 1rem" }}>
+            <button
+              type="submit"
+              style={{ marginTop: " 1rem" }}
+              onClick={Login}
+            >
               Login
             </button>
-            <p className="or"> or</p>
-            <button>
-              <span> Sign in with Google</span> <FcGoogle />
-            </button>
-            <div className="up">
-              <p>
-                <span>Dont have an account !</span>
-              </p>
+          </form>
+          <p className="or"> or</p>
+          <button onClick={signWithGoogle}>
+            <span> Sign in with Google</span> <FcGoogle />
+          </button>
+          <div className="up">
+            <p>
+              <span>Dont have an account !</span>
+            </p>
+            <div className="btn">
               <p className="link" onClick={handleSignup}>
                 create one?
               </p>
+              <p
+                onClick={() => {
+                  setForgetPassword(true);
+                  setSignIn(false);
+                }}
+              >
+                Forgot password?
+              </p>
             </div>
-          </form>
+          </div>
         </div>
       )}
     </Container>
@@ -69,6 +117,39 @@ const Container = styled.div`
       margin-bottom: 2rem;
       font-size: 2rem;
       font-weight: 900;
+    }
+    p {
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+
+    .btn {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      p {
+        text-align: center;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: smaller;
+      }
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      font-size: medium;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      font-weight: 700;
+      border: none;
+
+      background-color: var(--btn);
+      color: var(--text);
+      transition: var(--trans);
+      &:hover {
+        box-shadow: var(--btn-s);
+      }
     }
     form {
       display: flex;
@@ -115,35 +196,6 @@ const Container = styled.div`
             cursor: pointer;
           }
         }
-      }
-      button {
-        width: 100%;
-        padding: 15px;
-        font-size: medium;
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        font-weight: 700;
-        border: none;
-        background-color: transparent;
-        background-color: var(--btn);
-        color: var(--text);
-        transition: var(--trans);
-        &:hover {
-          box-shadow: var(--btn-s);
-        }
-        svg {
-          font-size: 1.2rem;
-        }
-      }
-      p {
-        text-align: center;
-        margin: 0.5rem 0;
-      }
-      .link {
-        text-decoration: underline;
-        cursor: pointer;
-        font-size: smaller;
       }
     }
   }

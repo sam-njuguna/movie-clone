@@ -6,11 +6,13 @@ import More from "./More";
 import Genres from "./Genres";
 import useGenre from "../hooks/useGenres";
 import Requests from "../api/Request";
+import { useNavigate } from "react-router-dom";
 const SingleCard = ({ getUrl }) => {
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [numPages, setnumPages] = useState();
   const [selectedGenres, setSelectedGenres] = useState([]);
+  const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
   const genreforURL = useGenre(selectedGenres);
   useEffect(() => {
     const getMovie = async () => {
@@ -26,7 +28,11 @@ const SingleCard = ({ getUrl }) => {
   function truncate(str, n) {
     return str.length > n ? str.substr(0, n - 1) + "..." : str;
   }
-
+  const navigate = useNavigate();
+  const handleNavigate = (type, id) => {
+    navigate(`/details/${type}/${id}`);
+    window.scroll(0, 0);
+  };
   return (
     <div>
       <Genres
@@ -37,11 +43,28 @@ const SingleCard = ({ getUrl }) => {
       />
       <Container>
         <div className="main  container">
+          {!movie?.length && <h3>No movies available</h3>}
           <div className="main__data ">
             {movie.map((movie, index) => {
               return (
-                <div key={index} className="details">
-                  <img src={`${S_image}${movie.poster_path}`} alt="" />
+                <div
+                  key={index}
+                  className="details"
+                  onClick={() =>
+                    handleNavigate(
+                      movie.first_air_date ? "tv" : "movie",
+                      movie.id
+                    )
+                  }
+                >
+                  <img
+                    src={
+                      movie?.poster_path
+                        ? `${S_image}${movie.poster_path}`
+                        : unavailable
+                    }
+                    alt=""
+                  />
                   <div className="desc">
                     <p>{truncate(`${movie.title || movie.name}`, 15)}</p>
                   </div>
@@ -66,6 +89,9 @@ const Container = styled.div`
   /* padding: 2rem 0; */
 
   .main {
+    h3 {
+      text-align: center;
+    }
     &__data {
       display: flex;
       flex-wrap: wrap;
@@ -83,6 +109,13 @@ const Container = styled.div`
         flex-direction: column;
         justify-content: center;
         position: relative;
+        cursor: pointer;
+        transition: var(--trans);
+        &:hover {
+          .desc {
+            background-color: #414040;
+          }
+        }
         @media (max-width: 699px) {
           width: 160px;
         }

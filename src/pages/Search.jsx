@@ -3,11 +3,10 @@ import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 
-import { SearchCard } from "../components";
+import { Footer, Navbar, SearchCard } from "../components";
 
 import Api from "../api/Api";
 import { Api_key } from "../api/Request";
-import { motion } from "framer-motion";
 import More from "../components/More";
 
 const Search = () => {
@@ -51,6 +50,7 @@ const Search = () => {
   };
   return (
     <div className="all">
+      <Navbar />
       <Container>
         <ThemeProvider theme={darkTheme}>
           <div className="field">
@@ -58,15 +58,16 @@ const Search = () => {
               type="text"
               placeholder="Search.."
               onChange={(e) => setSearchText(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleClick(e)}
             />
-            <motion.p
+            <p
               whileInView={{ x: [-100, 0], opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
               type="submit"
               onClick={handleClick}
             >
               <FaSearch />
-            </motion.p>
+            </p>
           </div>
           <div className="tabs">
             <Tabs
@@ -91,40 +92,41 @@ const Search = () => {
         </div>
         {numOfPages > 1 && <More setPage={setPage} numOfPages={numOfPages} />}
       </Container>
+      <Footer />
     </div>
   );
 };
 const Container = styled.div`
-  padding-top: 5rem;
+  padding-top: 8rem;
+  min-height: 80vh;
   .field {
     display: flex;
     justify-content: center;
     align-items: center;
     input {
-      padding: 1rem;
+      padding: 0.7rem;
       border: 1px solid #fff;
       background-color: transparent;
       width: 30%;
       color: white;
-      font-size: 1.1rem;
+      font-size: medium;
       border-radius: 2rem;
       @media (max-width: 950px) {
         width: 70%;
       }
     }
     p {
-      padding: 0.5rem;
+      padding: 0.6rem;
       background-color: transparent;
       color: #b40202;
       border: none;
-      margin-left: -3rem;
-
+      margin: 0.6rem 0;
+      margin-left: -3.5rem;
       svg {
         cursor: pointer;
-        font-size: x-large;
+        font-size: large;
         &:hover {
           transition: 0.2s ease;
-          transform: scale(1.2);
         }
       }
     }

@@ -1,8 +1,8 @@
 import React from "react";
 import Banner from "../components/Banner";
 import Requests from "../api/Request";
-import { Card } from "../components";
-import Navbar from "../components/Navbar";
+import { Card, Footer } from "../components";
+import { Navbar } from "../components";
 const Home = () => {
   return (
     <div>
@@ -20,6 +20,7 @@ const Home = () => {
       />
       <Card title="On Air  Series" getUrl={Requests.getOnAir} link="/tv" />
       <Card title="Popular Series" getUrl={Requests.getPopularTv} link="/tv" />
+      <Footer />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Api from "../api/Api";
 import { B_image } from "../api/Images";
@@ -17,18 +18,25 @@ const Banner = () => {
     };
     getMovie();
   }, []);
-
+  const navigate = useNavigate();
+  const handleNavigate = (type, id) => {
+    navigate(`/details/${type}/${id}`);
+    window.scroll(0, 0);
+  };
   return (
     <Container>
-      <div
-        className="bg"
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundImage: `url(${background})`,
-          width: "100%",
-        }}
-      ></div>
+      <div className="top">
+        <div
+          className="bg"
+          style={{
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundImage: `url(${background})`,
+            width: "100%",
+          }}
+        ></div>
+        <div className="footer"></div>
+      </div>
       <div className="main ">
         <div className="main__data container">
           <h2>{movie.media_type === "tv" ? "Series" : "Movie"}</h2>
@@ -39,24 +47,44 @@ const Banner = () => {
           </h4>
 
           <p>{movie.overview}</p>
-          <button>
-            <a href={`/movie/${movie.id}`}>View Movie</a>
+          <button
+            onClick={() =>
+              handleNavigate(movie.first_air_date ? "tv" : "movie", movie.id)
+            }
+          >
+            <a href="">View Movie</a>
           </button>
         </div>
       </div>
-      <div className="footer"></div>
     </Container>
   );
 };
 
 const Container = styled.div`
   margin-bottom: 5rem;
-  .bg {
-    min-height: 80vh;
-    object-fit: cover;
-    position: relative;
-    background-repeat: no-repeat;
-    filter: brightness(30%);
+  .top {
+    .bg {
+      min-height: 100vh;
+      object-fit: cover;
+      position: relative;
+      background-repeat: no-repeat;
+      filter: brightness(30%);
+      position: relative;
+    }
+    .footer {
+      height: 10rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(
+        180deg,
+        transparent,
+        rgba(15, 15, 15, 0.626),
+        #131313
+      );
+      /* background-color: red; */
+    }
   }
   .main {
     position: absolute;
@@ -71,8 +99,12 @@ const Container = styled.div`
     &__data {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      /* justify-content: center;
+      align-items: center; */
+      width: 60%;
+      @media (max-width: 699px) {
+        width: 98%;
+      }
       h2 {
         text-decoration: underline;
       }
@@ -86,46 +118,51 @@ const Container = styled.div`
 
       h4 {
         display: flex;
-        justify-content: center;
-        align-items: center;
+
         gap: 0.5rem;
         margin-bottom: 1.8rem;
         span {
-          width: 60px;
-          height: 60px;
+          width: 40px;
+          height: 20px;
+          padding: 0.2rem;
           justify-content: center;
           align-items: center;
-          background-color: var(--btn);
-          box-shadow: var(--btn-s);
+          background-color: green;
+
           display: flex;
           font-size: small;
-          border-radius: 50%;
         }
         h5 {
           margin-left: 2rem;
           text-decoration: underline;
         }
       }
-      p {
-        width: 60%;
-        margin: auto;
-        @media (max-width: 699px) {
-          width: 100%;
+      button {
+        margin-top: 2rem;
+        width: max-content;
+        padding: 12px;
+        font-size: medium;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        font-weight: 700;
+        border: none;
+
+        background-color: var(--btn);
+        transition: var(--trans);
+        a {
+          color: var(--text);
+        }
+        &:hover {
+          box-shadow: var(--btn-s);
         }
       }
-    }
-    .footer {
-      height: 10rem;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-image: linear-gradient(
-        180deg,
-        transparent,
-        rgba(37, 37, 37, 0.626),
-        #111111
-      );
+      p {
+        width: 100%;
+        margin: auto;
+        @media (max-width: 699px) {
+        }
+      }
     }
   }
 `;

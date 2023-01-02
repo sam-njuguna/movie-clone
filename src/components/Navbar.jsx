@@ -5,10 +5,10 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const nav = [
-  // {
-  //   name: "Home",
-  //   link: "/",
-  // },
+  {
+    name: "Home",
+    link: "/",
+  },
   {
     name: "Movies",
     link: "/movie",
@@ -32,36 +32,6 @@ const Navbar = () => {
 
   return (
     <Conatiner>
-      {/* <div className={`navbar ${scrolled ? "scroll" : ""}`}>
-        <div className="left">
-          <div className="logo">
-            <h1>S</h1>
-            <h4>Trailers</h4>
-          </div>
-
-          <ul>
-            {nav.map((item, index) => (
-              <li key={index}>
-                <NavLink to={item.link}>{item.name}</NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="right">
-          <Link to="/search">
-            <div className="search">
-              <button>
-                <FaSearch />
-              </button>
-            </div>
-          </Link>
-
-          <div className="profile" onClick={handleClick}>
-            <CgProfile />
-          </div>
-        </div>
-      </div> */}
-
       <div className={`navbar ${scrolled ? "scroll" : ""}`}>
         <div className="logo">
           <Link to="/">logo</Link>
@@ -88,22 +58,24 @@ const Navbar = () => {
   );
 };
 const Conatiner = styled.div`
-  width: 100%;
-
-  position: fixed;
-  z-index: 9999;
-  padding: 2rem 1rem;
-  background-color: var(--bg);
-  @media (min-width: 700px) {
-    padding: 1rem 10rem;
-    @media (max-width: 1299px) {
-      padding: 2rem 6rem;
-    }
+  .scroll {
+    background-color: #141414dd;
+    width: 100%;
   }
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    width: 100%;
+
+    position: fixed;
+    z-index: 9999;
+    padding: 1rem;
+    @media (min-width: 700px) {
+      padding: 2rem 10rem;
+    }
     .main {
       display: flex;
       gap: 2rem;

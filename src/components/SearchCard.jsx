@@ -14,15 +14,26 @@ const SearchCard = ({ movie }) => {
   function truncate(str, n) {
     return str.length > n ? str.substr(0, n - 1) + "..." : str;
   }
-  console.log(movie);
+
   return (
     <Container>
       <div className="main container">
+        {!movie?.length && <h3>No movies available</h3>}
         <div className="main__data">
           {movie.map((movie, index) => (
-            <div className="details" key={index}>
+            <div
+              className="details"
+              key={index}
+              onClick={() =>
+                handleNavigate(movie.first_air_date ? "tv" : "movie", movie.id)
+              }
+            >
               <img
-                src={movie ? `${S_image}${movie.poster_path}` : unavailable}
+                src={
+                  movie?.poster_path
+                    ? `${S_image}${movie.poster_path}`
+                    : unavailable
+                }
                 alt=""
               />
               <div className="desc">
@@ -43,9 +54,11 @@ const SearchCard = ({ movie }) => {
 };
 const Container = styled.div`
   min-height: 90vh;
-  padding: 2rem 0;
 
   .main {
+    h3 {
+      text-align: center;
+    }
     &__data {
       display: flex;
       flex-wrap: wrap;
