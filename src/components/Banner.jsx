@@ -39,7 +39,7 @@ const Banner = () => {
       </div>
       <div className="main ">
         <div className="main__data container">
-          <h2>{movie.media_type === "tv" ? "Series" : "Movie"}</h2>
+          <h2>{movie.first_air_date === "tv" ? "Series" : "Movie"}</h2>
           <h1>{movie.title || movie.name}</h1>
           <h4>
             Rated <span>{movie.vote_average}</span>
@@ -102,8 +102,11 @@ const Container = styled.div`
       /* justify-content: center;
       align-items: center; */
       width: 60%;
-      @media (max-width: 699px) {
+      @media (max-width: 999px) {
         width: 98%;
+        @media (min-width: 700px) {
+          width: 80%;
+        }
       }
       h2 {
         text-decoration: underline;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Main, Signin } from "../components";
+import { Main, Signin, Footer } from "../components";
 
 import bg from "../assets/header-img.png";
 const MainPage = () => {
@@ -15,7 +15,8 @@ const MainPage = () => {
         <div className="main ">
           <div className="home">
             <div className="logo">
-              <h2>sam</h2>
+              <h1>S</h1>
+              <h4>Trailers</h4>
             </div>
             <button className="btn login-btn" onClick={handleSignin}>
               Sign In
@@ -43,6 +44,7 @@ const MainPage = () => {
         </div>
       </Container>
       <Main />
+      <Footer />
     </>
   );
 };
@@ -76,7 +78,24 @@ const Container = styled.div`
       justify-content: space-between;
       width: 100%;
       padding: 1rem;
-
+      .logo {
+        color: #b40202;
+        margin-bottom: 1rem;
+        @media (max-width: 699px) {
+          text-align: center;
+        }
+        h1 {
+          font-weight: 900;
+          font-size: 2.5rem;
+          margin-left: 1rem;
+          @media (max-width: 699px) {
+            margin-left: 0;
+          }
+        }
+        h4 {
+          margin-top: -0.9rem;
+        }
+      }
       button {
         width: max-content;
         padding: 10px;

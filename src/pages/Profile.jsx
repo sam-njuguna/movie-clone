@@ -44,7 +44,7 @@ const Profile = () => {
                   <h3>Plans</h3>
                   <div className="screen-plan">
                     {plans.map((plan, i) => (
-                      <div className="info" key={i}>
+                      <div className="info-plan" key={i}>
                         <div className="info-detail">
                           <h5>{plan.name}</h5>
                           <p>{plan.quality}</p>
@@ -73,14 +73,23 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     padding-top: 2rem;
+    margin-left: -1rem;
     .all {
       display: flex;
       flex-direction: column;
+      h2 {
+        border-bottom: 2px solid #313131;
+        width: 100%;
+        margin-bottom: 0.6rem;
+      }
       .info {
         display: flex;
         justify-content: space-between;
         gap: 0.9rem;
         width: 30vw;
+        border-bottom: 2px solid #313131;
+        width: 100%;
+        padding-bottom: 0.9rem;
 
         @media (max-width: 699px) {
           width: 70vw;
@@ -120,14 +129,25 @@ const Container = styled.div`
             display: flex;
             flex-direction: column;
             margin-top: 0.5rem;
+            h3 {
+              text-decoration: underline;
+              font-size: medium;
+              font-weight: 800;
+              margin-bottom: 0.5rem;
+            }
             .screen-plan {
               display: flex;
               flex-direction: column;
               gap: 0.5rem;
-              .info {
+              .info-plan {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                width: 30vw;
+
+                @media (max-width: 699px) {
+                  width: 70vw;
+                }
                 h5 {
                   font-weight: 900;
                 }
