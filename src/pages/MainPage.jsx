@@ -67,20 +67,16 @@ const Container = styled.div`
   .main {
     position: absolute;
     overflow: hidden;
-
     top: 0;
     left: 0;
     right: 0;
     .home {
-      padding-top: 0rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 1rem;
       .logo {
         color: #b40202;
-        margin-bottom: 1rem;
         @media (max-width: 699px) {
           text-align: center;
         }
@@ -109,7 +105,7 @@ const Container = styled.div`
           box-shadow: var(--btn-s);
         }
         @media (max-width: 699px) {
-          padding: 12px;
+          padding: 10px;
           font-size: small;
         }
       }
