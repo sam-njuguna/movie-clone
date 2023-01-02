@@ -18,7 +18,6 @@ const Main = () => {
     };
     getMovie();
   }, []);
-  console.log(movie);
   return (
     <Container>
       <div className="desc">
@@ -257,9 +256,8 @@ const Container = styled.div`
       @media (max-width: 999px) {
         flex-direction: column;
         img {
-          width: 320px;
-          height: 400px;
-          object-fit: cover;
+          width: 350px;
+          object-fit: contain;
           background-position: center;
         }
         @media (min-width: 700px) {

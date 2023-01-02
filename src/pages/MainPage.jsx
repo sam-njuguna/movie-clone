@@ -54,13 +54,13 @@ const Container = styled.div`
 
     width: 100%;
 
-    height: 95vh;
+    min-height: 105vh;
     position: relative;
     filter: brightness(20%);
     position: relative;
-    @media (max-width: 699px) {
+    /* @media (max-width: 699px) {
       height: 120vh;
-    }
+    } */
   }
   .main {
     position: absolute;
@@ -79,7 +79,7 @@ const Container = styled.div`
 
       button {
         width: max-content;
-        padding: 12px;
+        padding: 10px;
         font-size: medium;
         font-weight: 700;
         border: none;
@@ -90,7 +90,7 @@ const Container = styled.div`
           box-shadow: var(--btn-s);
         }
         @media (max-width: 699px) {
-          padding: 11px;
+          padding: 12px;
           font-size: small;
         }
       }
@@ -127,7 +127,7 @@ const Container = styled.div`
           align-items: center;
           justify-content: center;
           input {
-            padding: 15px;
+            padding: 10px;
             border: none;
             font-size: 1rem;
             @media (max-width: 699px) {
@@ -140,7 +140,7 @@ const Container = styled.div`
 
           button {
             width: max-content;
-            padding: 20px;
+            padding: 10px;
             font-size: medium;
             align-items: center;
             font-weight: 700;
@@ -153,7 +153,7 @@ const Container = styled.div`
             }
 
             @media (max-width: 699px) {
-              padding: 11px;
+              padding: 10px;
               font-size: small;
             }
           }

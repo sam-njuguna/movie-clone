@@ -101,7 +101,7 @@ const Container = styled.div`
           }
           button {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             font-size: medium;
             display: flex;
             justify-content: center;
@@ -138,7 +138,7 @@ const Container = styled.div`
 
               button {
                 width: max-content;
-                padding: 12px;
+                padding: 10px;
                 font-size: smaller;
                 display: flex;
                 justify-content: center;

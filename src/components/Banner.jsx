@@ -52,7 +52,7 @@ const Banner = () => {
               handleNavigate(movie.first_air_date ? "tv" : "movie", movie.id)
             }
           >
-            <a href="">View Movie</a>
+            <a href="">Watch Movie</a>
           </button>
         </div>
       </div>
@@ -64,7 +64,7 @@ const Container = styled.div`
   margin-bottom: 5rem;
   .top {
     .bg {
-      min-height: 100vh;
+      min-height: 90vh;
       object-fit: cover;
       position: relative;
       background-repeat: no-repeat;
@@ -72,7 +72,7 @@ const Container = styled.div`
       position: relative;
     }
     .footer {
-      height: 10rem;
+      height: 12rem;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -140,7 +140,7 @@ const Container = styled.div`
       button {
         margin-top: 2rem;
         width: max-content;
-        padding: 12px;
+        padding: 10px;
         font-size: medium;
         display: flex;
         justify-content: center;

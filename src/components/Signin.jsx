@@ -21,12 +21,8 @@ const Signin = () => {
   };
   const signWithGoogle = () => {
     signInWithPopup(auth, provider)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(e);
-      });
+      .then(() => {})
+      .catch(() => {});
   };
   const Login = (e) => {
     e.preventDefault();
@@ -35,10 +31,8 @@ const Signin = () => {
       emailRef.current.value,
       passwordRef.current.value
     )
-      .then((user) => {})
-      .catch((error) => {
-        setError(error.message);
-      });
+      .then(() => {})
+      .catch(() => {});
   };
   return (
     <Container>
@@ -198,9 +192,9 @@ const Container = styled.div`
             position: absolute;
             content: "";
             top: 0.6rem;
-            right: 1rem;
-            font-size: 1.1rem;
-            color: var(--bg);
+            right: 2rem;
+            font-size: 1.2rem;
+            color: var(--text);
             cursor: pointer;
           }
         }

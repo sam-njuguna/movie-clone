@@ -38,7 +38,7 @@ const MovieDetails = () => {
     };
     getCredit();
   }, [params.type, params.id]);
-  console.log(cast);
+
   useEffect(() => {
     const getVideo = async () => {
       const res = await Api.get(
@@ -302,6 +302,7 @@ const Container = styled.div`
     h1 {
       text-align: center;
       margin-bottom: 0.9rem;
+      text-decoration: underline;
     }
     @media (max-width: 699px) {
       width: 98%;
@@ -311,6 +312,12 @@ const Container = styled.div`
     }
     iframe {
       height: 500px;
+      object-fit: contain;
+      background-position: center;
+      background-size: cover;
+      @media (max-width: 699px) {
+        height: 400px;
+      }
     }
   }
 `;

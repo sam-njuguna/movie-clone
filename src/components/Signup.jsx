@@ -23,12 +23,8 @@ const Signup = () => {
 
   const signWithGoogle = () => {
     signInWithRedirect(auth, provider)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(e);
-      });
+      .then(() => {})
+      .catch(() => {});
   };
   const Register = (e) => {
     e.preventDefault();
@@ -37,12 +33,8 @@ const Signup = () => {
       emailRef.current.value,
       passwordRef.current.value
     )
-      .then((user) => {
-        console.log(user);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => {})
+      .catch(() => {});
   };
   return (
     <Container>
@@ -89,7 +81,7 @@ const Signup = () => {
           </form>
           <p className="or"> or</p>
           <button onClick={signWithGoogle}>
-            <span> Sign in with Google</span> <FcGoogle />
+            <span> Sign in with Google </span> <FcGoogle />
           </button>
           <div className="up">
             <p>
@@ -188,9 +180,9 @@ const Container = styled.div`
             position: absolute;
             content: "";
             top: 0.6rem;
-            right: 1rem;
-            font-size: 1.1rem;
-            color: var(--bg);
+            right: 2rem;
+            font-size: 1.2rem;
+            color: var(--text);
             cursor: pointer;
           }
         }
