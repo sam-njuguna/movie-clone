@@ -85,6 +85,9 @@ const Conatiner = styled.div`
     }
     @media (min-width: 700px) {
       padding: 0 10rem;
+      @media (max-width: 999px) {
+        padding: 0 6rem;
+      }
     }
     .logo {
       a {
