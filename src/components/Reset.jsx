@@ -31,12 +31,24 @@ const Reset = () => {
 const Conatiner = styled.div`
   .form {
     background-color: var(--bg);
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 900;
+      @media (max-width: 699px) {
+        font-size: 1.5rem;
+      }
+    }
     form {
       input {
-        /* width: 100%; */
-        padding: 12px;
+        padding: 10px;
         margin-bottom: 1rem;
         font-size: medium;
+        background-color: transparent;
+        border: 2px solid #313131;
+        color: var(--text);
+        border-radius: none;
         @media (max-width: 699px) {
           font-size: medium;
         }

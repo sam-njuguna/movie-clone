@@ -117,6 +117,9 @@ const Container = styled.div`
       margin-bottom: 2rem;
       font-size: 2rem;
       font-weight: 900;
+      @media (max-width: 699px) {
+        font-size: 1.5rem;
+      }
     }
     p {
       text-align: center;
@@ -136,7 +139,7 @@ const Container = styled.div`
     }
     button {
       width: 100%;
-      padding: 15px;
+      padding: 10px;
       font-size: medium;
       display: flex;
       justify-content: center;
@@ -159,7 +162,7 @@ const Container = styled.div`
       width: 20vw;
       @media (max-width: 999px) {
         /* width: 100vw; */
-        width: 95vw;
+        width: 88vw;
         @media (min-width: 700px) {
           width: 50vw;
         }
@@ -174,9 +177,14 @@ const Container = styled.div`
         }
         input {
           /* width: 100%; */
-          padding: 12px;
+          padding: 10px;
           margin-bottom: 1rem;
           font-size: medium;
+          /* background-color: var(--text); */
+          background-color: transparent;
+          border: 2px solid #313131;
+          color: var(--text);
+          border-radius: none;
           @media (max-width: 699px) {
             font-size: medium;
           }

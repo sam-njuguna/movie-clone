@@ -72,7 +72,7 @@ const Conatiner = styled.div`
 
     position: fixed;
     z-index: 9999;
-    padding: 1rem;
+    padding: 0.9rem;
     @media (min-width: 700px) {
       padding: 2rem 10rem;
     }

@@ -72,7 +72,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    padding-top: 2rem;
     .all {
       display: flex;
       flex-direction: column;
@@ -81,7 +81,7 @@ const Container = styled.div`
         justify-content: space-between;
         gap: 0.9rem;
         width: 30vw;
-        margin: 0 auto;
+
         @media (max-width: 699px) {
           width: 70vw;
         }
