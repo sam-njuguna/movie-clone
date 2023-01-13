@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "DEBUG=vite": "* vite",
     "build": "vite build && cp ./_redirects ./dist/_redirects",
     "preview": "vite preview"
   },
