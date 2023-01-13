@@ -41,9 +41,13 @@ const Navbar = () => {
           </Link>
         </div>
         <ul>
-          {nav.map((item, index) => (
+          {nav.map((item, index, exact) => (
             <li key={index}>
-              <NavLink to={item.link} exact onClick={() => window.scroll(0, 0)}>
+              <NavLink
+                to={item.link}
+                exact={`${exact}`}
+                onClick={() => window.scroll(0, 0)}
+              >
                 {item.name}
               </NavLink>
             </li>

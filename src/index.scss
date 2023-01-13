@@ -35,17 +35,17 @@ body {
 }
 .container {
   padding-top: 6rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
   margin: auto;
   width: 90%;
+  overflow: hidden;
   @media (min-width: 768px) {
     @media (max-width: 999px) {
       width: 90%;
     }
   }
   @media (max-width: 699px) {
-    width: 95%;
+    width: 96%;
   }
-}
-.app-main {
-  overflow-x: hidden;
 }

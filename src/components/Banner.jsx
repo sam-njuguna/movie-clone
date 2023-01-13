@@ -100,8 +100,6 @@ const Container = styled.div`
     &__data {
       display: flex;
       flex-direction: column;
-      /* justify-content: center;
-      align-items: center; */
       width: 60%;
       @media (max-width: 999px) {
         width: 98%;

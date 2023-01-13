@@ -48,6 +48,9 @@ const MovieDetails = () => {
     };
     getVideo();
   }, [params.type, params.id]);
+  function truncate(str, n) {
+    return str.length > n ? str.substr(0, n - 1) + "" : str;
+  }
 
   return (
     <>
@@ -76,7 +79,10 @@ const MovieDetails = () => {
                 <div className="desc">
                   <h1 className="title">{movie?.name || movie?.title}</h1>
                   <h4 className="date">
-                    {movie?.first_air_date || movie?.release_date}
+                    {truncate(
+                      `${movie?.first_air_date || movie?.release_date}`,
+                      5
+                    )}
                   </h4>
 
                   <p className="genre">
@@ -88,15 +94,20 @@ const MovieDetails = () => {
                         ))}
                   </p>
                   <div className="over">
-                    <p>{movie?.overview}</p>
+                    <p>
+                      {movie?.overview
+                        ? movie?.overview
+                        : "No overview -Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatum dignissimos est? "}
+                    </p>
                   </div>
                   <div className="season">
                     {movie?.seasons &&
                       movie?.seasons.map((c, i) => (
                         <div className="sea" key={i}>
-                          <p>{c?.name}</p>
-
-                          <p>{c?.air_date}</p>
+                          <p>
+                            S{c?.name.slice(6)}{" "}
+                            <span>-{truncate(`${c?.air_date}`, 5)}</span>
+                          </p>
                         </div>
                       ))}
                   </div>
@@ -105,7 +116,7 @@ const MovieDetails = () => {
                     <div className="casts__all">
                       {cast &&
                         cast.map((c, i) => (
-                          <div className="casts__all__cast">
+                          <div className="casts__all__cast" key={i}>
                             <img
                               src={
                                 c?.profile_path
@@ -114,7 +125,7 @@ const MovieDetails = () => {
                               }
                               alt=""
                             />
-                            <span key={i}>{c?.name}</span>
+                            <span>{c?.name}</span>
                           </div>
                         ))}
                     </div>
@@ -124,7 +135,6 @@ const MovieDetails = () => {
             </div>
           </div>
           <div className=" container videos">
-            <h1>Trailers</h1>
             {vid &&
               vid.map((item, i) => (
                 <div className="video" key={i}>
@@ -134,7 +144,7 @@ const MovieDetails = () => {
                   <iframe
                     src={`https://www.youtube.com/embed/${item.key}`}
                     ref={iframeRef}
-                    frameborder="0"
+                    frameBorder="0"
                     width="100%"
                     margin="0 auto"
                     title="video"
@@ -197,6 +207,7 @@ const Container = styled.div`
         margin: 0 auto;
         @media (max-width: 699px) {
           flex-direction: column;
+          width: 96%;
           gap: 0;
           .header {
             display: none;
@@ -228,26 +239,31 @@ const Container = styled.div`
               flex-wrap: wrap;
               padding: 0.4rem 0.6rem;
               border-radius: 20px;
-              font-size: smaller;
+              font-size: small;
               font-weight: 800;
             }
+          }
+          .over {
+            margin-bottom: 1rem;
           }
           .season {
             display: flex;
             flex-wrap: wrap;
             justify-content: start;
-            gap: 0.5rem;
+            gap: 0.2rem;
             .sea {
-              background-color: red;
-              margin-top: 1rem;
-              width: 90px;
+              width: 80px;
               display: flex;
               align-items: center;
               justify-content: center;
               flex-wrap: wrap;
               p {
-                font-size: smaller;
-                font-weight: 600;
+                font-size: small;
+                font-weight: 500;
+                text-decoration: underline;
+                span {
+                  color: #646464;
+                }
               }
             }
           }
@@ -269,7 +285,7 @@ const Container = styled.div`
                 display: none;
               }
               @media (max-width: 699px) {
-                width: 96vw;
+                width: 92vw;
               }
               &__cast {
                 display: flex;
