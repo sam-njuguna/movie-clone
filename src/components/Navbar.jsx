@@ -139,7 +139,7 @@ const Conatiner = styled.div`
           cursor: pointer;
           transition: var(--trans);
           &:hover {
-            color: #838181dd;
+            color: #b40202;
           }
           @media (max-width: 699px) {
             font-size: smaller;

@@ -81,7 +81,7 @@ const Signup = () => {
           </form>
           <p className="or"> or</p>
           <button onClick={signWithGoogle}>
-            <span> Sign in with Google </span> <FcGoogle />
+            <FcGoogle /> <span> Sign in with Google </span>
           </button>
           <div className="up">
             <p>
@@ -123,9 +123,10 @@ const Container = styled.div`
     button {
       width: 100%;
       padding: 10px;
-      font-size: medium;
+      font-size: smaller;
       display: flex;
       justify-content: center;
+      text-align: center;
       gap: 1rem;
       font-weight: 700;
       border: none;
@@ -136,6 +137,9 @@ const Container = styled.div`
       &:hover {
         box-shadow: var(--btn-s);
       }
+      svg {
+        font-size: 1.5rem;
+      }
     }
     form {
       display: flex;
@@ -144,7 +148,7 @@ const Container = styled.div`
 
       width: 20vw;
       @media (max-width: 999px) {
-        width: 70vw;
+        width: 85vw;
         @media (min-width: 700px) {
           width: 50vw;
         }
@@ -181,7 +185,7 @@ const Container = styled.div`
             top: 0.6rem;
             right: 1rem;
             font-size: 1.2rem;
-            color: var(--text);
+            color: var(--bg);
             cursor: pointer;
           }
         }
