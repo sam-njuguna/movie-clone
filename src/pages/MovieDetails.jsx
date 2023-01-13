@@ -205,6 +205,7 @@ const Container = styled.div`
         gap: 3rem;
         width: 80%;
         margin: 0 auto;
+        padding-top: 7rem;
         @media (max-width: 699px) {
           flex-direction: column;
           width: 96%;
@@ -222,16 +223,17 @@ const Container = styled.div`
           h4 {
             font-size: smaller;
             text-decoration: underline;
+            margin: 1rem 0;
           }
           .genre {
             display: flex;
             flex-wrap: wrap;
             justify-content: start;
             gap: 0.5rem;
-            margin-top: 1rem;
+            /* margin-top: 1rem; */
             span {
               background-color: var(--bg);
-              margin-bottom: 1rem;
+              /* margin-bottom: 1rem; */
               width: max-content;
               display: flex;
               align-items: center;
@@ -244,7 +246,7 @@ const Container = styled.div`
             }
           }
           .over {
-            margin-bottom: 1rem;
+            margin: 1rem 0;
           }
           .season {
             display: flex;
