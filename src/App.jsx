@@ -33,7 +33,7 @@ const App = () => {
     return unsubscribe;
   }, [dispatch]);
   return (
-    <div className="main">
+    <div className="app-main">
       {!user ? (
         <MainPage />
       ) : (

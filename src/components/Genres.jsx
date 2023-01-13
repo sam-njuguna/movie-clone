@@ -34,7 +34,7 @@ const Genres = ({ setPage, get_Url, selectedGenres, setSelectedGenres }) => {
         <div className="main" key={index}>
           <Chip
             label={genre.name}
-            style={{ margin: 2, flexDirection: "row-reverse" }}
+            style={{ margin: 2 }}
             size="small"
             key={genre.id}
             clickable

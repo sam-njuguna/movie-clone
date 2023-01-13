@@ -43,6 +43,9 @@ body {
     }
   }
   @media (max-width: 699px) {
-    width: 98%;
+    width: 95%;
   }
+}
+.app-main {
+  overflow-x: hidden;
 }
