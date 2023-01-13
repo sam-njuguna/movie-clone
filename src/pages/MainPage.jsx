@@ -75,6 +75,7 @@ const Container = styled.div`
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      padding: 0 1rem;
       .logo {
         color: #b40202;
         @media (max-width: 699px) {
@@ -125,6 +126,7 @@ const Container = styled.div`
       width: 100%;
       .details {
         text-align: center;
+        margin: 1rem;
         h1 {
           @media (max-width: 699px) {
             font-size: x-large;

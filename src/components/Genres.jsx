@@ -60,7 +60,7 @@ const Genres = ({ setPage, get_Url, selectedGenres, setSelectedGenres }) => {
   );
 };
 const Container = styled.div`
-  padding-top: 8rem;
+  padding-top: 6rem;
   border-radius: 0.4rem;
   width: 50%;
   margin: 0 auto;

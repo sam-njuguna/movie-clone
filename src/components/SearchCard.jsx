@@ -56,6 +56,7 @@ const Container = styled.div`
   min-height: 90vh;
 
   .main {
+    padding-top: 2rem;
     h3 {
       text-align: center;
     }

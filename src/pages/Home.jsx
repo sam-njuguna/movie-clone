@@ -9,7 +9,7 @@ const Home = () => {
       <Navbar />
       <Banner />
       <Card
-        title="Upcoming Movies"
+        title="Trending Movies"
         getUrl={Requests.getUpcoming}
         link="/movie"
       />

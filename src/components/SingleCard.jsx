@@ -89,6 +89,7 @@ const Container = styled.div`
   /* padding: 2rem 0; */
 
   .main {
+    padding-top: 2rem;
     h3 {
       text-align: center;
     }

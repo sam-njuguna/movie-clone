@@ -64,12 +64,13 @@ const Container = styled.div`
   margin-bottom: 5rem;
   .top {
     .bg {
-      min-height: 90vh;
+      min-height: 92vh;
       object-fit: cover;
       position: relative;
       background-repeat: no-repeat;
       filter: brightness(30%);
       position: relative;
+      object-fit: contain;
     }
     .footer {
       height: 12rem;
@@ -80,8 +81,8 @@ const Container = styled.div`
       background-image: linear-gradient(
         180deg,
         transparent,
-        rgba(15, 15, 15, 0.626),
-        #131313
+        rgba(15, 15, 15, 0.781),
+        #181717
       );
       /* background-color: red; */
     }

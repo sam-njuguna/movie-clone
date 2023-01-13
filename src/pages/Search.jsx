@@ -54,12 +54,6 @@ const Search = () => {
       <Container>
         <ThemeProvider theme={darkTheme}>
           <div className="field">
-            <input
-              type="text"
-              placeholder="Search.."
-              onChange={(e) => setSearchText(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && handleClick(e)}
-            />
             <p
               whileInView={{ x: [-100, 0], opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
@@ -68,6 +62,12 @@ const Search = () => {
             >
               <FaSearch />
             </p>
+            <input
+              type="text"
+              placeholder="Search.."
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleClick(e)}
+            />
           </div>
           <div className="tabs">
             <Tabs
@@ -103,26 +103,25 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 2rem;
     input {
       padding: 0.7rem;
-      border: 1px solid #fff;
+      border: 2px solid #fff;
       background-color: transparent;
       width: 30%;
       color: white;
       font-size: medium;
-      border-radius: 2rem;
+
       @media (max-width: 950px) {
         width: 70%;
       }
     }
     p {
-      /* padding: 0.6rem; */
       background-color: transparent;
       color: #b40202;
-      border: none;
-      padding-top: 0.6rem;
-      padding-bottom: 0.5rem;
-      margin-left: -2.5rem;
+      border: 2px solid var(--text);
+      padding: 0.5rem;
+
       svg {
         cursor: pointer;
         font-size: large;

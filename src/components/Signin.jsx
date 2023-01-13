@@ -156,7 +156,7 @@ const Container = styled.div`
       width: 20vw;
       @media (max-width: 999px) {
         /* width: 100vw; */
-        width: 88vw;
+        width: 70vw;
         @media (min-width: 700px) {
           width: 50vw;
         }
